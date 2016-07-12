@@ -1,0 +1,48 @@
+
+{% extends 'main.html' %}
+{% block main %}
+{% load staticfiles %}
+	<br>
+	<form action='' method='post'>
+	<h4>Add to URL Adress:</h4>
+	{% csrf_token %}
+		<table>
+			{{ form.as_table }}
+		</table>
+	<input class='button' type='submit' value='Submit'>
+	</form>
+
+
+    {% if username %}
+
+
+<br><br><br>
+    <form align="center" action="" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <thead>
+                <tr>
+                    <th><img src="{% static 'static/images/checkbox.png'%}" width="20px" ></th>
+                    <th width="150">URL Adress</th>
+                    <th>Create Time</th>
+                    <th width="150">Shortener URL</th>
+                    <th width="150">Cycle</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for url in short_urls_list %}
+                    <tr>
+                        <td><input type="checkbox" name="choices" value="{{url.id}}"></td>
+                        <td width="150"><a href="{{url.link_to_long}}/"> {{url.link_to_long}}</a></td>
+                        <td>{{ url.created_date}}</td>
+                        <td><a href="/{{url}}/"> {{ host }}/{{url}}/ </a></td>
+                        <td>{{url.number_of_clicks}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+	    </table>
+        <button type="submit" name="delete" class="button">Delete</button>
+    </form>
+
+	{% endif %}
+{% endblock %}

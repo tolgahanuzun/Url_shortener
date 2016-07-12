@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+	<html>
+	<head>
+		<link rel='stylesheet' type='text/css' href={% static 'static/css/foundation.css' %}>
+		<title>URL Short</title>
+	</head>
+	<body>
+		<div class="top-bar">
+			<section class='top-bar-section'>
+				<ul class="title-area">
+					<li class="name">
+						<h1><a href='/'>Homa Page</a></h1>
+					</li>
+				</ul>
+
+				<ul class='right'>
+					{% if username %}
+						<li><a href='/auth/logout/'>Log Out ({{ username }})</a></li>
+					{% else %}
+						<li><a href='/auth/login/'>Login</a></li>
+					{% endif %}
+				</ul>
+
+			</section>
+		</div>
+
+	<div class='row'>
+	{% block main %}{% endblock %}
+	{% block login %}{% endblock %}
+
+	</div>
+
+	</body>
+	</html>
