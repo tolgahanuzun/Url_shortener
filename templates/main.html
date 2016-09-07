@@ -3,7 +3,7 @@
 
 	<html>
 	<head>
-		<link rel='stylesheet' type='text/css' href={% static 'static/css/foundation.css' %}>
+		<link rel='stylesheet' type='text/css' href={% static '/static/css/foundation.css' %}>
 		<title>URL Short</title>
 	</head>
 	<body>
@@ -29,6 +29,8 @@
 	<div class='row'>
 	{% block main %}{% endblock %}
 	{% block login %}{% endblock %}
+	{% block ads %}{% endblock %}
+
 
 	</div>
 
