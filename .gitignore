@@ -1,6 +1,6 @@
-db.sqlite3
+
 *.pyc
-migrations/
+
 .directory
 bin/
 local/
