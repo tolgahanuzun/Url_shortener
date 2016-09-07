@@ -1,42 +1,68 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, redirect
-from django.contrib import auth
+from django.core.urlresolvers import reverse
+from django.shortcuts import render, render_to_response, redirect
+from django.template import RequestContext
+from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
+from django.core.exceptions import ValidationError
+from django.http import *
 from django.contrib.auth.forms import UserCreationForm
-from django.core.context_processors import csrf
+from django.utils import timezone
+from Profile.models import Profile
+from Profile.forms import LoginForm, RegistrationForm
 
 # Create your views  here.
 def login(request):
-	args ={}
-	args.update(csrf(request))
-	if request.POST:
-		username = request.POST.get('username', '')
-		password = request.POST.get('password', '')
-		user = auth.authenticate(username=username, password=password)
-		if user is not None:
-			auth.login(request, user)
-			return redirect('/')
-		else:
-			args['login_error'] = 'Errro!'
-			return render_to_response('login.html', args)
+	if not request.user.is_authenticated():
+		context = {}
+		try:
+			username = request.POST['username']
+			password = request.POST['password']
+			user = authenticate(username=username, password=password)
+
+			if user is not None:
+				auth_login(request, user)
+				return HttpResponseRedirect("/")
+			else:
+				context['error'] = 'Non active user'
+				
+		except:
+			context['error'] = ''
+			
+		populateContext(request, context)	
+		return render(request, 'login.html', context)
+
 	else:
-		return render_to_response('login.html', args)
+		return HttpResponseRedirect("/index/")
+
+def populateContext(request, context):
+	context['authenticated'] = request.user.is_authenticated()
+
+	if context['authenticated'] == True:
+		context['username'] = request.user.username
+
 
 def logout(request):
-	auth.logout(request)
+	auth_logout(request)
 	return redirect('/')
 
-def register(request):
-	args = {}
-	args.update(csrf(request))
-	args['form'] = UserCreationForm()
-	if request.POST:
-		newuser_form = UserCreationForm(request.POST)
-		if newuser_form.is_valid():
-			newuser_form.save()
-			newuser = auth.authenticate(username=newuser_form.cleaned_data['username'],
-				password = newuser_form.cleaned_data['password2'])
-			auth.login(request, newuser)
-			return redirect('/')
+def register(request): 
+	if not request.user.is_authenticated():
+		form = RegistrationForm()
+
+		if request.method == "POST":
+			form = RegistrationForm(request.POST)
+
+			if  form.is_valid():
+				form.save()       
+				return render(request,"/index",
+								   locals())
+			else:
+				form = RegistrationForm()
+				return render(request,"register.html",
+								   locals())
 		else:
-			args['form'] = newuser_form
-	return render_to_response('register.html', args)
+			form = RegistrationForm()
+			return render(request, "register.html",{'form':form})
+
+	else:
+		return HttpResponseRedirect("/index/")    
