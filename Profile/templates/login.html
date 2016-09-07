@@ -1,17 +1,36 @@
 {% extends 'main.html' %}
 
 {% block login %}
-	<br>
-    <div class='large-offset-3 large-6 colomns'>
-		<form action='/auth/login/' method='post'>
+	<div class="row centered">
+	<div class='col col-6'>
+		<form action='/auth/login/' method='post' class="form">
 			{% csrf_token %}
-			<label for='username'>Username</label>
-			<input type='text' name='username' id='username'>
-			<label for='password'>Password</label>
-			<input type='password' name='password' id='password'>
-			<input class='button' type='submit' value='Login'>
-			<div class="label round secondary"><a href="/auth/register/">Register!</a></div> 
+		<fieldset>
+		<legend>Login data</legend>
+		<div class="row centered">
+			<div class="col col-6">
+				<div class="form-item">
+					<label for='username'>Username</label>
+					<input type='text' name='username' id='username'>
+				</div>	
+			</div>
+		</div>	
+		<div class="row centered">
+			<div class="col col-6">
+				<div class="form-item">
+					<label for='password'>Password</label>
+					<input type='password' name='password' id='password'>
+				</div>	
+			</div>
+		</div>
+		</fieldset>
+		<div class="row centered">
+			<div class="form-item">
+				<input class='button ' type='submit' value='Login'>
+				<a class="button " href="/auth/register/">Register!</a>
+			</div>
+		</div>
 		</form>
 	</div>
-
+	</div>
 {% endblock %}
