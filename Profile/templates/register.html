@@ -1,12 +1,48 @@
 {% extends 'main.html' %}
 
 {% block login %}
-    <div class="large-offset-3 large-6 colomns">
-    	<form action="/auth/register/" method="post">
-    		{% csrf_token %}
-    		{{ form }}
-    		
-    		<input class="button" type="submit" value="Register">
-    	</form>
-    </div>
+<div class="row centered">
+	<div class='col col-6'>
+	<form action="/auth/register/" method="post" class="form">
+		{% csrf_token %}
+		<fieldset>
+		<legend>Register</legend>
+		<div class="row">
+		    <div class="col col-6">
+				<div class="form-item">
+					<label for="id_username">Username</label>
+					<input maxlength="30" name="username" type="text">
+				</div>
+			</div>	
+		    <div class="col col-6">
+				<div class="form-item">
+					<label for="id_email">E-mail</label>
+					<input maxlength="254" name="email" type="email">
+				</div>
+			</div>	
+		</div>
+	<div class="row">
+	    <div class="col col-6">
+			<div class="form-item">
+				<label for="id_password1">Password</label>
+				<input name="password1" type="password">
+			</div>
+		</div>	
+	    <div class="col col-6">
+			<div class="form-item">
+				<label for="id_password2">Password</label>
+				<input name="password2" type="password">
+			</div>
+		</div>
+	</div>	
+		</fieldset>
+	<div class="row centered">
+		<div class="form-item">
+			<input class="button" type="submit" value="Register">
+		</div>
+	</div>
+	
+	</form>
+	</div>
+</div>
 {% endblock %}
