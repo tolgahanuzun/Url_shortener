@@ -1,6 +1,7 @@
 from django.conf.urls import patterns,  include, url
 from django.conf.urls.static import static
 from shortener import views
+from django.conf import settings
 
 urlpatterns = [
     url(r'^add_url/', views.add_site),
