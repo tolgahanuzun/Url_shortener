@@ -1,31 +1,12 @@
-## Url shortener
+# Link Kısaltma Servisi
 
-Made with Django link shortening serv.
+Linklerinizi reklamlı ve reklamsız kısaltabileceğiniz bir servis. Üyelik sistemi bulunan ve basit bir arayüze sahip olan bir yapıda geliştirilmekte.
 
-## Kod Örneği
+## Todo
 
-Kütüphanenini geliştiriciler tarafından daha anlaşılır olması için çalıştırılabilir basit kod örneği eklemenizi tavsiye ederiz.
+- Readme güncellenecek.
 
-## Motivasyon
+- Herokuapp deploy edilecek.
 
-Bu projenin neden ortaya çıktığını kısaca anlatabilirsiniz. Hangi sorunlara çözüm bulduğundan bahsetmenizi tavsiye ederiz.
+- Development ve Production Dalları oluşturulacak.
 
-## Kurulum aşaması
-
-Projenin kurulum aşamasından bahsetmenizi tavsiye ederiz.
-
-## API Reference
-
-Projenin ihtiyaçlarına karşın API Referanslarının dökümantasyonundan bahsetmenizi tavsiye ederiz.
-
-## Tests
-
-Kod örnekleri ile Test aşamasınından bahsetmenizi tavsiye ederiz.
-
-## Contributors
-
-Projenize destekçi olan kişilerin iletişim bilgilerini burada bahsetmenizi tavsiye ederiz.
-
-## License
-
-Kullandığınız Lisansı bahsetmenizi tavsiye ederiz. (MIT, Apache, etc.) 
