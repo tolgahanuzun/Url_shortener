@@ -1,6 +1,4 @@
-
 *.pyc
-
 .directory
 bin/
 local/
