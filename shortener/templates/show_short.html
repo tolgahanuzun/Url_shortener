@@ -1,6 +1,17 @@
 {% extends 'main.html' %}
 {% block main %}	
-	<h1>Shortener URL:</h1>
-	<a href ='/{{ short_url }}/'>{{ whole_short_u }}</a>
+	
+
+	<div class="row centered">
+    <div class="col col-3 ">
+    	<fieldset>
+        <legend>Link</legend>
+        <div class="row centered">
+		<a href ='/{{ short_url }}/'>{{ whole_short_u }}</a>
+
+		</div>
+		</fieldset>
+	</div>
+</div>	
 
 {% endblock %}
