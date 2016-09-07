@@ -1,38 +1,49 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-
 	<html>
 	<head>
-		<link rel='stylesheet' type='text/css' href={% static '/static/css/foundation.css' %}>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel='stylesheet' type='text/css' href={% static '/static/css/kube.css' %}>
+		<link rel='stylesheet' type='text/css' href={% static '/static/css/main.css' %}>
+
 		<title>URL Short</title>
 	</head>
-	<body>
-		<div class="top-bar">
-			<section class='top-bar-section'>
-				<ul class="title-area">
-					<li class="name">
-						<h1><a href='/'>Homa Page</a></h1>
-					</li>
-				</ul>
-
-				<ul class='right'>
-					{% if username %}
-						<li><a href='/auth/logout/'>Log Out ({{ username }})</a></li>
-					{% else %}
-						<li><a href='/auth/login/'>Login</a></li>
-					{% endif %}
-				</ul>
-
-			</section>
+	<body class="page-kube">
+		<div class="show-on-small">
+    		<div id="nav-toggle-box">
+    			<div id="nav-toggle-brand">
+    			<a href="/">Home Page</a>
+    		</div>
+            <a href="#" id="nav-toggle" class="toggleme" data-target="#header" data-component-toggleme-loaded="true"><i class="menu-icon"></i></a>
+    	</div>
+	</div>
+	<div id="header" class="hide-on-small">
+		<div id="header-brand">
+			
+			<a href="/">Home Page</a>
+			
 		</div>
+		<nav id="header-nav" >
+			<ul>
+			{% if username %}
+				<li><a href='/admin/'>Admin</a></li>
+				<li><a href='/auth/logout/'>Log Out ({{ username }})</a></li>
 
-	<div class='row'>
+			{% else %}
+				<li><a href='/auth/login/'>Login</a></li>
+				<li><a href='/auth/register/'>Register</a></li>
+
+			{% endif %}
+			</ul>
+		</nav>
+		</div>
+	
 	{% block main %}{% endblock %}
 	{% block login %}{% endblock %}
 	{% block ads %}{% endblock %}
+	
 
-
-	</div>
+	
 
 	</body>
 	</html>
