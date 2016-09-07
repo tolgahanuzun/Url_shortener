@@ -1,16 +1,14 @@
 from django import forms
 
 class AddSite(forms.Form):
+	CHOICES = (
+        ('Yes_Ads', 'Yes Advertiment'),
+        ('Not_Ads', 'Not Advertiment'),
+
+    )
 	link = forms.URLField(initial='http://')
+	advertiment=forms.ChoiceField(choices=CHOICES, required=True, label='Example')
 
-class Register(forms.Form):
-	username = forms.CharField()
-	email = forms.EmailField()
-	password = forms.CharField(max_length=32, widget=forms.PasswordInput)
-
-class Login(forms.Form):
-	username = forms.CharField()
-	password = forms.CharField(max_length=32, widget=forms.PasswordInput)
 '''
 class ChoiceForDelete(forms.Form):
 	choices = forms.ModelMultipleChoiceField(
