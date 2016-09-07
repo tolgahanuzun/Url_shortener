@@ -52,13 +52,15 @@ def add_site(request):
                 short.long_link.delete()
                 short.delete()
             return HttpResponseRedirect('/')
+        return render(request,'add_site.html',{'error':" "})
+
 
     else:
         args['form'] = AddSite()
         args['username'] = auth.get_user(request).username
         args['short_urls_list'] = ShortURL.objects.filter(user=auth.get_user(request).id)
         args['host'] = request.META['HTTP_HOST']
-        return render_to_response('add_site.html', args)
+        return render(request,'add_site.html', args)
 
 def open_short_url(request, key):
     
@@ -74,6 +76,6 @@ def open_short_url(request, key):
        	else:
 			return HttpResponseRedirect(long_url)
     else:
-        return render_to_response('wrong.html')
+        return render(request,'ads.html',{'wrong':"Error"})
 
 
