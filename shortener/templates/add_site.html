@@ -22,7 +22,7 @@
         <table align="center">
             <thead>
                 <tr>
-                    <th><img src="{% static 'static/images/checkbox.png'%}" width="20px" ></th>
+                    <th><img src="{% static '/static/images/checkbox.png'%}" width="20px" ></th>
                     <th width="150">URL Adress</th>
                     <th>Create Time</th>
                     <th width="150">Shortener URL</th>
@@ -33,10 +33,10 @@
                 {% for url in short_urls_list %}
                     <tr>
                         <td><input type="checkbox" name="choices" value="{{url.id}}"></td>
-                        <td width="150"><a href="{{url.link_to_long}}/"> {{url.link_to_long}}</a></td>
+                        <td width="150"><a href="{{url.long_link}}/"> {{url.long_link}}</a></td>
                         <td>{{ url.created_date}}</td>
                         <td><a href="/{{url}}/"> {{ host }}/{{url}}/ </a></td>
-                        <td>{{url.number_of_clicks}}</td>
+                        <td>{{url.clicks}}</td>
                     </tr>
                 {% endfor %}
             </tbody>
