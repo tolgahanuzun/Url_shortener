@@ -1,6 +1,27 @@
 {% extends 'main.html' %}
 {% block ads %}	
-	<h1>URL GO!</h1>
-	<a href ='{{ url }}'>{{ url }}</a>
+
+{% if wrong %}
+<div class="row centered">
+	<div class="col col-3 ">
+		<fieldset>
+		<legend>Link</legend>
+		<h2>Upss!</h2>
+		</fieldset>
+	</div>
+</div>
+{% else %}
+<div class="row centered">
+	<div class="col col-3 ">
+		<fieldset>
+		<legend>Link</legend>
+		<div class="row centered">
+			<a class='button primary' href ='{{ url }}'>Link GO!!</a>
+		</div>
+		</fieldset>
+	</div>
+</div>	
+
+{% endif %}
 
 {% endblock %}
